@@ -1,0 +1,1049 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MySQL,高性能," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/ico_wufeilong.info.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="保持高性能MySQL的几个优秀习惯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高性能MySQL的几个优秀习惯">
+<meta property="og:url" content="http://yoursite.com/2017/05/11/MySQL的几个优秀习惯/index.html">
+<meta property="og:site_name" content="Feron's BLOG">
+<meta property="og:description" content="保持高性能MySQL的几个优秀习惯">
+<meta property="og:updated_time" content="2017-05-11T15:58:59.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高性能MySQL的几个优秀习惯">
+<meta name="twitter:description" content="保持高性能MySQL的几个优秀习惯">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/11/MySQL的几个优秀习惯/"/>
+
+
+
+
+
+  <title> 高性能MySQL的几个优秀习惯 | Feron's BLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c59128df5f45d342a40893e1150bf84b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Feron's BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">KEEP CLAM AND WRITE ON</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/11/MySQL的几个优秀习惯/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feron Wu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olbemhszx.bkt.clouddn.com/wufeilong-info-kn.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feron's BLOG">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feron's BLOG" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                高性能MySQL的几个优秀习惯
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T23:05:23+08:00">
+                2017-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/11/MySQL的几个优秀习惯/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/11/MySQL的几个优秀习惯/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/11/MySQL的几个优秀习惯/" class="leancloud_visitors" data-flag-title="高性能MySQL的几个优秀习惯">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  保持高性能MySQL的几个优秀习惯
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="MySQL高性能的几个习惯"><a href="#MySQL高性能的几个习惯" class="headerlink" title="MySQL高性能的几个习惯"></a>MySQL高性能的几个习惯</h2><h3 id="DDL、SQL写得好"><a href="#DDL、SQL写得好" class="headerlink" title="DDL、SQL写得好"></a>DDL、SQL写得好</h3><ul>
+<li>一定要有主键(Primary Key)</li>
+<li>没有主键会导致什么问题?<ul>
+<li>数据多次读取后可能更离散，有更多随机I/O</li>
+<li>MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全表，导致复制延迟</li>
+</ul>
+</li>
+<li>好的主键特点<ul>
+<li>没有业务用途</li>
+<li>数据呈连续增长，且最好是自增(AUTO_INCREMENT)</li>
+<li>坚决不能选用CHAR/UUID等类型</li>
+</ul>
+</li>
+<li>关于数据长度<ul>
+<li>够用前提下，越短越好</li>
+<li>消耗更少的存储空间</li>
+<li>需要进行排序时，消耗更少的内存空间</li>
+<li>例如用INT UNSIGNED存储IPV4地址，不用CHAR(15)类型</li>
+<li>案例：11个字符长度的数值，bigint vs char(120) vs char(11)，1万条<br>记录，Logical_read：111 vs 1170 vs 224</li>
+</ul>
+</li>
+<li>适当使用TEXT/BLOG类型<ul>
+<li>data page默认16KB</li>
+<li>每行长度超过8KB时，就需要分裂data page</li>
+<li>产生更多离散I/O</li>
+<li>案例：一个100G的表拆分成4个表后，总大小仅25G</li>
+</ul>
+</li>
+<li>每个表增加create_time、update_time两个字段<ul>
+<li>分别表示创建时间以及更新时间</li>
+<li>业务可能用不到，但对运维管理非常有用</li>
+<li>可以用来判断哪些是可以归档的老数据，定期进行归档</li>
+<li>方便用来做自定义的差异备份</li>
+</ul>
+</li>
+<li>索引很重要<ul>
+<li>InnoDB行锁是基于索引实现的</li>
+<li>如果没有索引将会是灾难性的<ul>
+<li>读取时，全表扫描</li>
+<li>修改时，全表记录锁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>索引设计<ul>
+<li>基数(cardinality)低的字段一般没必要建立单列索引</li>
+<li>字符型字段上建立索引时优先采用部分索引(prefix index)</li>
+<li>5.6.9之后，optimizer能识别到普通索引同时存储主键值，无需显式定义加上主键列(index extensions)</li>
+<li>优先多列联合索引，少用单列索引</li>
+</ul>
+</li>
+<li>好SQL的几个特点<ul>
+<li>所有WHERE条件都加上引号</li>
+<li>避免潜在的类型隐式转换风险</li>
+<li>避免个别条件失效时造成SQL语法错误</li>
+<li>不SELECT *</li>
+<li>减少不必要的I/O(I/O成本较大)</li>
+<li>提高可以利用覆盖索引的几率</li>
+<li>避免SQL注入风险</li>
+<li>所有用户输入值都要做过滤</li>
+<li>利用PREPARE做预处理</li>
+<li>利用SQL_MODE做限制</li>
+<li>LIKE查询时，不要用%通配符最左前导(无法使用索引)</li>
+<li>能UNION ALL就不要UNION(UNION需要去重，产生临时表)</li>
+<li>SQL中最好不要有运算</li>
+<li>WHERE字句中不要有函数</li>
+<li>关于JOIN<ul>
+<li>满足业务需求前提下尽量用inner join，让优化器自动选择驱动表</li>
+<li>有时候优化器选择的驱动表未必是最优的，可以尝试采用手动调整</li>
+<li>最后的排序字段如果不在驱动表中，则会有filesort</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>糟糕的SQL示例<br>  1.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> t <span class="keyword">SET</span> c2 = ? <span class="keyword">AND</span> c3 = ? WHREE c1 = ?</div><div class="line">=&gt;</div><div class="line"><span class="keyword">UPDATE</span> t <span class="keyword">SET</span> c2 = ?,c3 = ? <span class="keyword">WHERE</span> c1 = ?</div></pre></td></tr></table></figure>
+<p>  2.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> t <span class="keyword">SET</span> c2 =? <span class="keyword">WHERE</span> c1 = <span class="string">'?'</span></div><div class="line">=&gt;</div><div class="line"><span class="keyword">UPDATE</span> t <span class="keyword">SET</span> c2 = ? <span class="keyword">WHERE</span> c1 = <span class="string">'?'</span></div></pre></td></tr></table></figure>
+<p>  3.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c1 = <span class="string">'?'</span></div><div class="line">=&gt;</div><div class="line"><span class="keyword">SELECT</span> c2,c3 <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c1 = <span class="string">'?'</span></div></pre></td></tr></table></figure>
+<p>  4.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> c2,c3 <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c4 <span class="keyword">like</span> <span class="string">'%???%'</span></div><div class="line">=&gt;</div><div class="line"><span class="keyword">SELECT</span> c2,c3 <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c1 &gt;= ? <span class="keyword">AND</span> c1 &lt;= ? <span class="keyword">AND</span> c4 <span class="keyword">like</span> <span class="string">'%???%'</span></div></pre></td></tr></table></figure>
+<p>  5.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> c2,c3 <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> <span class="built_in">date</span>(c1) = <span class="string">'2017-01-01'</span></div><div class="line">=&gt;</div><div class="line"><span class="keyword">SELECT</span> c2,c3 <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c1 &gt;= <span class="string">'2017-01-01'</span> <span class="keyword">AND</span> c1 &lt; <span class="string">'2017-01-02'</span></div></pre></td></tr></table></figure>
+<p>  6.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> c2,c3 <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c1 = int_value</div><div class="line">=&gt;</div><div class="line"><span class="keyword">SELECT</span> c2,c3 <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c1 = <span class="string">'int_value'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>关于EXPLAIN</p>
+<ul>
+<li>关键业务上线之前，都要EXPLAIN确认其执行计划</li>
+<li>或提前分析slow query log，防患未然</li>
+<li>EXPLAIN中如有Using temporary、Using filesort、或typa=ALL时，尽量想办法进行优化</li>
+</ul>
+</li>
+</ul>
+<h3 id="建表规约"><a href="#建表规约" class="headerlink" title="建表规约"></a>建表规约</h3><ol>
+<li>表达是与否概念的字段，必须使用is_xxx的方式命名，数据类型是unsigned tinyint（1表示是，0表示否）。<strong>[强制]</strong></li>
+<li>表名、字段名必须使用小写字母或数字，禁止出现数字开头，禁止两个下划线中间只出现数字。数据库字段名的修改代价很大，因无法进行预发布，所以字段名称需慎重考虑。<strong>[强制]</strong><br> 正例：gatter_admin, task_config, level3_name<br> 反例：GetterAdmin, taskConfig, level_3_name</li>
+<li>表名不使用复数名词 <strong>[强制]</strong><br> 说明：标明应该仅仅表示表里面的实体内容，不应该表示实体数量，对应于DO类名也是单数形式，符合表达习惯。</li>
+<li>禁用保留字，如desc、range、match、delayed等，详情请参考MySQL官方文档。 <strong>[强制]</strong></li>
+<li>主键索引名为pk_fieldName;唯一索引名为uk_fieldName;普通索引名为idx<em>fieldName。<strong>[强制]</strong><br> 说明：pk</em>即primary key;uk<em>即unique key;idx</em>即index的简称。</li>
+<li>小数类型为decimal，禁止使用double和float。 <strong>[ 强制 ]</strong><br> 说明：float和double在存储时，存在精度损失问题，很可能在值比较时得不到正确的结果。如果存储的数据范围超过decimal的范围，建议将数字拆分成证书和小数单独存储。</li>
+<li>如果存储的字符串长度几乎相等，使用char定长字符串类型。 <strong>[ 强制 ]</strong></li>
+<li>varchar是可变长字符串，不预先分配存储空间，长度不要超过5000，若存储长度大于此值，定义字段类型为text,独立出来一张表，用主键来对应，避免影响其他字段索引效率。 <strong>[ 强制 ]</strong></li>
+<li>表必备3个字段，id、gmt_create、gmt_modified。 <strong>[ 强制 ]</strong><br> 其中id为主键，类型为unsigned bigint、单表时自增、步长为1。gmt_create,gmt_modified的类型均为date_time类型。</li>
+<li>表的命名方式最好是“业务名称_表的作用”。 <strong>[ 推荐 ]</strong><br>正例：tiger_task /  tiger_reader / mpp_config</li>
+<li>数据库名与应用名称尽量一致。 <strong>[ 推荐 ]</strong></li>
+<li>如果修改字段含义或对字段表示的状态追加时，需要及时更新字段注释。 <strong>[ 推荐 ]</strong></li>
+<li>字段允许适当冗余，以提高性能，但是必须考虑数据同步的情况。冗余字段应遵循：      <ol>
+<li>不是频繁修改的字段</li>
+<li>不是varchar超长字段，更不能是text字段<br>正例：商品类目名称使用频率高，字段长度短，名称基本一成不变，可在相关联的表中冗余存<br>储类目名称，避免关联查询。</li>
+</ol>
+</li>
+<li>单表行数超过 500 万行或者单表容量超过 2GB，才推荐进行分库分表。<strong>[ 推荐 ]</strong><br>说明：如果预计三年后的数据量根本达不到这个级别，请不要在创建表时就分库分表。</li>
+<li>合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检<br>索速度。 <strong>[ 参考 ]</strong><br>正例：无符号值可以避免误存负数，且扩大了表示范围。      </li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>年龄区间</th>
+<th>类型</th>
+<th>表示范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人</td>
+<td>150 岁之内</td>
+<td>unsigned tinyint</td>
+<td>无符号值：0到255</td>
+</tr>
+<tr>
+<td>龟</td>
+<td>数百岁</td>
+<td>unsigned smallint</td>
+<td>无符号值：0到65535</td>
+</tr>
+<tr>
+<td>恐龙化石</td>
+<td>数千万年</td>
+<td>unsigned int</td>
+<td>无符号值：0到约42.9亿</td>
+</tr>
+<tr>
+<td>太阳</td>
+<td>约 50 亿年</td>
+<td>unsigned bigint</td>
+<td>无符号值：0到约10的19 次方</td>
+</tr>
+</tbody>
+</table>
+<h3 id="索引规约"><a href="#索引规约" class="headerlink" title="索引规约"></a>索引规约</h3><ol>
+<li>业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引。<strong>[ 强制 ]</strong><br> 说明：不要以为唯一索引影响了insert速度，这个速度损耗可以忽略，但提高查询速度是明显的，另外，在应用层做了非常完善的校验控制，只要没有唯一索引，根据墨菲定律，必然有脏数据产生。</li>
+<li>超过3个表禁止join。需要join的字段，数据类型必须保持一致；多表关联查询时，保证被关联的字段需要有索引。 <strong>[ 强制 ]</strong><br>说明：即使双表join也有注意索引、SQL性能。</li>
+<li>在varchar字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度即可。 <strong>[ 强制 ]</strong><br>说明：说明：索引的长度与区分度是一对矛盾体，一般对字符串类型数据，长度为 20 的索引，区分度会高达90%以上，可以使用 count(distinct left(列名, 索引长度))/count(*)的区分度来确定。</li>
+<li>页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决。 <strong>[ 强制 ]</strong><br>说明：索引文件具有B_Tree的最左前缀匹配特性，如果左边的值未确定，那么无法使用此索引。</li>
+<li>如果有order by场景，请使用索引的有序性。order by最后的字段是组合索引的一部分，并且放在索引组合顺序的最后，避免出现file_sort的情况，影响查询性能。<strong>[ 推荐 ]</strong><br>正例：where a=? and b=? order by c; 索引：a_b_c<br>反例：索引中有范围查找，那么索引有序性无法利用，如：WHERE a&gt;10 ORDER BY b; 索引a_b无法排序。</li>
+<li>利用索引覆盖来进行查询操作，避免回表。 <strong>[ 推荐 ]</strong><br>说明：如果一本书需要知道第11章是什么标题，会翻开第11章对应的那一页吗？目录浏览一下就好，这个目录就是起到覆盖索引的作用。<br>正例：能够建立索引的种类：主键索引、唯一索引、普通索引，而覆盖索引是一种查询的一种效果，用explain的结果，extra列会出现：using index。</li>
+<li><p>利用延迟关联或者子查询优化超多分页场景。<strong>[ 推荐 ]</strong><br>说明：MySQL并不是跳过offset行，而是取offset + N行，然后返回放弃前offset行，返回N行，那当offset特别大的时候，效率就特别低下，要么控制返回的总页数，要么对超过特定阈值的页数进行SQL改写。 <strong>[推荐]</strong><br> 正例：先快速定位需要获取的id段，然后再关联:     </p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> a.* <span class="keyword">FROM</span> 表<span class="number">1</span> a(<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> 表<span class="number">1</span> <span class="keyword">where</span> 条件 <span class="keyword">LIMIT</span> <span class="number">100000</span>, <span class="number">20</span>) b <span class="keyword">where</span> a.id=b.id</div></pre></td></tr></table></figure>
+</li>
+<li><p>SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，如果可以是 consts最好。 <strong>[推荐]</strong><br>说明：  </p>
+<ol>
+<li>consts 单表中最多只有一个匹配行（主键或者唯一索引），在优化阶段即可读取到数据。</li>
+<li>ref 指的是使用普通的索引（normal index）。</li>
+<li>range 对索引进行范围检索。<br>反例： explain表的结果，type=index，索引物理文件全扫描，速度非常慢，这个index级别比较range还低，与全表扫描是小巫见大巫。</li>
+</ol>
+</li>
+<li>建组合索引的时候，区分度最高的在最左边。 <strong>[推荐]</strong><br>正例：如果where a = ? and b = ?，a列的几乎接近于唯一值，那么只需要单列idx_a索引即可。<br>说明：存在非等号和等号混合判断条件时，在建索引时，请把等号条件的列前置。如：where a&gt;? and b=? 那么即使a的区分度更高，也必须把b放在索引的最前列。</li>
+<li>创建索引时避免有如下极端误解：<br>a. 误认为一个查询就需要建一个索引。<br>b. 误认为索引会消耗空间、严重拖慢更新和新增速度。<br>c. 误认为唯一索引一律需要在应用层通过“先查后插”方式解决。</li>
+</ol>
+<p>未完待续  …<br><strong>[注]</strong> 以上整理自阿里云栖大会资料，仅限分享学习。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/高性能/" rel="tag"># 高性能</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/14/万事开头难/" rel="next" title="由万事开头难想到的">
+                <i class="fa fa-chevron-left"></i> 由万事开头难想到的
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://olbemhszx.bkt.clouddn.com/wufeilong-info-kn.jpg"
+               alt="Feron Wu" />
+          <p class="site-author-name" itemprop="name">Feron Wu</p>
+          <p class="site-description motion-element" itemprop="description">Stay hungery,stay foolish</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mod-joker" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1783633470" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL高性能的几个习惯"><span class="nav-number">1.</span> <span class="nav-text">MySQL高性能的几个习惯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DDL、SQL写得好"><span class="nav-number">1.1.</span> <span class="nav-text">DDL、SQL写得好</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建表规约"><span class="nav-number">1.2.</span> <span class="nav-text">建表规约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引规约"><span class="nav-number">1.3.</span> <span class="nav-text">索引规约</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feron Wu</span>
+</div>
+
+
+<div class="powered-by">
+   个人博客
+</div>
+
+<div class="theme-info">
+  Stay Hungry  Stay foolish
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'disqus_X9RsguNY6C';
+      var disqus_identifier = '2017/05/11/MySQL的几个优秀习惯/';
+
+      var disqus_title = "高性能MySQL的几个优秀习惯";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6P89pV2AdFT1oy0MX6k8bcQF-gzGzoHsz", "BNznUOpl0vfOuS2WRghq40zK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
