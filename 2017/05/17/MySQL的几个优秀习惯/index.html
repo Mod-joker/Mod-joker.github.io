@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Blog, Feron, Technology" />
+  <meta name="keywords" content="MySQL,习惯,高性能MySQL," />
 
 
 
@@ -87,55 +87,16 @@
 
 
 
-<meta name="description" content="MySQL高性能的几个习惯SQL规约DDL、SQL写得好
-一定要有主键(Primary Key)
-没有主键会导致什么问题?
-数据多次读取后可能更离散，有更多随机I/O
-MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全表，导致复制延迟
-
-
-好的主键特点
-没有业务用途
-数据呈连续增长，且最好是自增(AUTO_INCREMENT)
-坚决不能选用CHAR/UUID等类型
-
-
-关于数">
+<meta name="description" content="高性能MySQL的N个习惯">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Feron's BLOG">
-<meta property="og:url" content="http://yoursite.com/2017/05/11/MySQL的几个优秀习惯/index.html">
+<meta property="og:title" content="高性能MySQL的N个习惯">
+<meta property="og:url" content="http://yoursite.com/2017/05/17/MySQL的几个优秀习惯/index.html">
 <meta property="og:site_name" content="Feron's BLOG">
-<meta property="og:description" content="MySQL高性能的几个习惯SQL规约DDL、SQL写得好
-一定要有主键(Primary Key)
-没有主键会导致什么问题?
-数据多次读取后可能更离散，有更多随机I/O
-MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全表，导致复制延迟
-
-
-好的主键特点
-没有业务用途
-数据呈连续增长，且最好是自增(AUTO_INCREMENT)
-坚决不能选用CHAR/UUID等类型
-
-
-关于数">
-<meta property="og:updated_time" content="2017-05-17T03:38:44.328Z">
+<meta property="og:description" content="高性能MySQL的N个习惯">
+<meta property="og:updated_time" content="2017-05-17T03:43:49.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Feron's BLOG">
-<meta name="twitter:description" content="MySQL高性能的几个习惯SQL规约DDL、SQL写得好
-一定要有主键(Primary Key)
-没有主键会导致什么问题?
-数据多次读取后可能更离散，有更多随机I/O
-MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全表，导致复制延迟
-
-
-好的主键特点
-没有业务用途
-数据呈连续增长，且最好是自增(AUTO_INCREMENT)
-坚决不能选用CHAR/UUID等类型
-
-
-关于数">
+<meta name="twitter:title" content="高性能MySQL的N个习惯">
+<meta name="twitter:description" content="高性能MySQL的N个习惯">
 
 
 
@@ -163,13 +124,13 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/11/MySQL的几个优秀习惯/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/17/MySQL的几个优秀习惯/"/>
 
 
 
 
 
-  <title>  | Feron's BLOG </title>
+  <title> 高性能MySQL的N个习惯 | Feron's BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -316,7 +277,7 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/11/MySQL的几个优秀习惯/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/17/MySQL的几个优秀习惯/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Feron Wu">
@@ -340,7 +301,7 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
             
             
               
-                
+                高性能MySQL的N个习惯
               
             
           </h1>
@@ -355,8 +316,8 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T23:05:23+08:00">
-                2017-05-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T00:00:00+08:00">
+                2017-05-17
               </time>
             
 
@@ -366,6 +327,28 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -374,8 +357,8 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/11/MySQL的几个优秀习惯/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/11/MySQL的几个优秀习惯/" itemprop="commentCount"></span>
+                <a href="/2017/05/17/MySQL的几个优秀习惯/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/17/MySQL的几个优秀习惯/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,7 +366,7 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
 
           
           
-             <span id="/2017/05/11/MySQL的几个优秀习惯/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2017/05/17/MySQL的几个优秀习惯/" class="leancloud_visitors" data-flag-title="高性能MySQL的N个习惯">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -399,6 +382,10 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
 
           
 
+          
+              <div class="post-description">
+                  高性能MySQL的N个习惯
+              </div>
           
 
         </div>
@@ -625,6 +612,16 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/习惯/" rel="tag"># 习惯</a>
+          
+            <a href="/tags/高性能MySQL/" rel="tag"># 高性能MySQL</a>
+          
+        </div>
+      
 
       
         
@@ -634,8 +631,8 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/14/万事开头难/" rel="next" title="由万事开头难想到的">
-                <i class="fa fa-chevron-left"></i> 由万事开头难想到的
+              <a href="/2017/05/16/JAVA历险记---个人学习JAVA之相关积累/" rel="next" title="JAVA学习历险记--个人笔记">
+                <i class="fa fa-chevron-left"></i> JAVA学习历险记--个人笔记
               </a>
             
           </div>
@@ -643,10 +640,6 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/16/JAVA历险记---个人学习JAVA之相关积累/" rel="prev" title="JAVA学习历险记--个人笔记">
-                JAVA学习历险记--个人笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -741,7 +734,7 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -918,9 +911,9 @@ MySQL复制环境中,如果选择RBR模式，没有主键的update需要读全�
 
     <script type="text/javascript">
       var disqus_shortname = 'disqus_X9RsguNY6C';
-      var disqus_identifier = '2017/05/11/MySQL的几个优秀习惯/';
+      var disqus_identifier = '2017/05/17/MySQL的几个优秀习惯/';
 
-      var disqus_title = "";
+      var disqus_title = "高性能MySQL的N个习惯";
 
 
       function run_disqus_script(disqus_script) {
