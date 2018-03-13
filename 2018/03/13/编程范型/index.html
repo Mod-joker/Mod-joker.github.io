@@ -1,0 +1,980 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程,软件工程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/ico_wufeilong.info.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="个人整理的资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tips Of Golang coding">
+<meta property="og:url" content="http://yoursite.com/2018/03/13/编程范型/index.html">
+<meta property="og:site_name" content="Feron's BLOG">
+<meta property="og:description" content="个人整理的资料">
+<meta property="og:updated_time" content="2018-03-13T14:38:16.150Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tips Of Golang coding">
+<meta name="twitter:description" content="个人整理的资料">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/13/编程范型/"/>
+
+
+
+
+
+  <title> Tips Of Golang coding | Feron's BLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c59128df5f45d342a40893e1150bf84b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Feron's BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">KEEP CLAM AND WRITE ON</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/编程范型/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feron Wu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olbemhszx.bkt.clouddn.com/wufeilong-info-kn.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feron's BLOG">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feron's BLOG" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Tips Of Golang coding
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T22:36:26+08:00">
+                2018-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/13/编程范型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/13/编程范型/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/13/编程范型/" class="leancloud_visitors" data-flag-title="Tips Of Golang coding">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  个人整理的资料
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="编程范型"><a href="#编程范型" class="headerlink" title="编程范型"></a>编程范型</h1><blockquote>
+<h4 id="从网上找到的资料整理而成"><a href="#从网上找到的资料整理而成" class="headerlink" title="从网上找到的资料整理而成"></a>从网上找到的资料整理而成</h4><p>编程范型或编程范式－<strong>Programming paradigm</strong>，（范即模范之意，范式即模式、方法），是一类典型的编程风格，是指从事软件工程的一类典型的风格（可以对照方法学）。如：函数式编程、程序编程、面向对象编程、指令式编程等等为不同的编程范型。<br>编程范型提供了（同时决定了）程序员对程序执行的看法。例如，在面向对象编程中，程序员认为程序是一系列相互作用的对象，而在函数式编程中一个程序会被看作是一个无状态的函数计算的序列。<br>正如软件工程中不同的群体会提倡不同的“方法学”一样，不同的编程语言也会提倡不同的“编程范型”。一些语言是专门为某个特定的范型设计的（如 <code>Smalltalk</code> 和 <code>Java</code> 支持面向对象编程，而 <code>Haskell</code> 和 <code>Scheme</code> 则支持函数式编程），同时还有另一些语言支持多种范型（如 <code>Ruby</code> 、 <code>Common Lisp</code> 、 <code>Python</code> 和 <code>Oz</code> ）。<br>很多编程范型已经被熟知他们禁止使用哪些技术，同时允许使用哪些。例如，纯粹的函数式编程不允许有副作用[1]；结构化编程不允许使用goto。可能是因为这个原因，新的范型常常被那些习惯于较早的风格的人认为是教条主义或过分严格。然而，这样避免某些技术反而更加证明了关于程序正确性——或仅仅是理解它的行为——的法则，而不用限制程序语言的一般性。<br>编程范型和编程语言之间的关系可能十分复杂，由于一个编程语言可以支持多种范型。例如，<code>C++</code>设计时，支持过程化编程、面向对象编程以及泛型编程。然而，设计师和程序员们要考虑如何使用这些范型元素来构建一个程序。一个人可以用 <code>C++</code> 写出一个完全过程化的程序，另一个人也可以用 <code>C++</code>写出一个纯粹的面向对象程序，甚至还有人可以写出杂揉了两种范型的程序。    </p>
+</blockquote>
+<h2 id="面向代理编程"><a href="#面向代理编程" class="headerlink" title="面向代理编程"></a>面向代理编程</h2><p>面向代理编程 (<strong>Agent-oriented programming</strong>，缩写为AOP) ，一种编程典范，它的观点主要集中于软件代理人（Software agent）之上。它是由面向对象程序设计所发展出来。相对于面向对象程序设计以对象为主，代理人导向程序设计则是以代理人为核心。代理人可以被视为是对象的进一步抽象化。</p>
+<h2 id="基于组件的软件工程"><a href="#基于组件的软件工程" class="headerlink" title="基于组件的软件工程"></a>基于组件的软件工程</h2><p>基于组件的软件工程 (<strong>Component-based software engineering</strong>，简称CBSE) 或基于组件的开发 (<strong>Component-Based Development</strong>，简称CBD) 是一种软件开发范型。它是现今软件复用理论实用化的研究热点，在组件对象模型的支持下，通过复用已有的构件，软件开发者可以“即插即用”地快速构造应用软件。这样不仅可以节省时间和经费，提高工作效率，而且可以产生更加规范、更加可靠的应用软件。</p>
+<h2 id="声明式编程"><a href="#声明式编程" class="headerlink" title="声明式编程"></a>声明式编程</h2><p>声明式编程 ( <strong>Declarative programming</strong> ) 是一种编程范式，与命令式编程相对立。它描述目标的性质，让电脑明白目标，而非流程。声明式编程不用告诉电脑问题领域，从而避免随之而来的副作用。而指令式编程则需要用算法来明确的指出每一步该怎么做。<br>声明式编程通常被看做是形式逻辑的理论，把计算看做推导。声明式编程因大幅简化了并行计算的编写难度，自2009起备受关注。<br>声明式语言包括数据库查询语言 ( <code>SQL</code>, <code>XQuery</code> ) ，正则表达式，逻辑编程，函数式编程和组态管理系统。<br>声明式编程通过函数、推论规则或项重写 (<code>term-rewriting</code>) 规则，来描述变量之间的关系。它的语言运行器 (编译器或解释器) 采用了一个固定的算法，以从这些关系产生结果。<br>声明式编程语言通常用作解决人工智能和约束满足问题。</p>
+<ul>
+<li><h3 id="函数编程"><a href="#函数编程" class="headerlink" title="函数编程"></a>函数编程</h3>函数式编程 (<strong><code>functional programming</code></strong>) 或称函数程序设计，又称泛函编程，是一种编程典范，它将电脑运算视为数学上的函数计算，并且避免使用程序状态以及易变对象。函数编程语言最重要的基础是λ演算 (<strong><code>lambda  calculus</code></strong>)。而且λ演算的函数可以接受函数当作输入（引数）和输出（传出值）。<br>比起命令式编程，函数式编程更加强调程序执行的结果而非执行的过程，倡导利用若干简单的执行单元让计算结果不断渐进，逐层推导复杂的运算，而不是设计一个复杂的执行过程。</li>
+<li><h3 id="约束编程"><a href="#约束编程" class="headerlink" title="约束编程"></a>约束编程</h3>约束编程 (<strong><code>Constraint programming</code></strong>)是一种编程典范，在这种编程范式中，变量之间的‘关系’是以约束的形式陈述（组织）的。这些‘关系（约束）’和命令式编程语言元素不同的是：它们并非明确说明了要去执行的步骤中的某一步，而是规范其解的一些属性。这样看来，约束编程是一种声明式的编程范式。</li>
+<li><h3 id="逻辑编程"><a href="#逻辑编程" class="headerlink" title="逻辑编程"></a>逻辑编程</h3><p>逻辑编序是种编程典范，它设置答案须匹配的规则来解决问题，而非设置步骤来解决问题。过程是</p>
+<p>事实+规则=结果。<br>不同的方法，可以看Inductive logic programming。</p>
+<p>逻辑编程的要点是将正规的逻辑风格带入计算机程序设计之中。数学家和哲学家发现逻辑是有效的理论分析工具。很多问题可以自然地表示成一个理论。说需要解答一个问题，通常与解答一个新的假设是否跟现在的理论无冲突等价。逻辑提供了一个证明问题是真还是假的方法。创建证明的方法是人所皆知的，故逻辑是解答问题的可靠方法。逻辑编程系统则自动化了这个程序。人工智能在逻辑编程的发展中发挥了重要的影响。</p>
+<p>猴子和香蕉问题是逻辑编程社区的著名问题。电脑须自行找出令猴子接触香蕉的可行方法，取代程序员指定猴子接触香蕉的路径和方法。</p>
+<p>逻辑编程创建了描述一个问题里的世界的逻辑模型。逻辑编程的目标是对它的模型创建新的陈述。世界上知识不断澎涨。传统来说，我们会将一个问题陈述成单一的假设。逻辑编程的程序通过证明这个假设在模型里是否为真来解决问题。</p>
+<p>一些经常用到逻辑编程工具的范畴：</p>
+<p>专家系统，程序从一个巨大的模型中产生一个建议或答案。<br>自动化证明定理，程序产生一些新定理来扩充现有的理论。<br>最常用的逻辑编程语言是Prolog，另外有较适用于大型方案的Mercury。详尽的清单可见于Category:逻辑编程语言。</p>
+<ul>
+<li><h4 id="回答集编程"><a href="#回答集编程" class="headerlink" title="回答集编程"></a>回答集编程</h4>回答集编程是语法上类似传统逻辑编程而语义上密切于非单调逻辑的一种声明式编程。在传统逻辑编程和回答集编程之间的主要区别是如何表示否定为失败。在传统逻辑编程中，否定为失败指示推导失败；在回答集编程中，它指示一个文字的一致性。<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4>回答集编程由规则的集合构成，每个规则由一个头部和一个后部构成:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head \leftarrow body</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>规则的头部和后部二者都是文字的集合，每个文字都是可能被否定的原子。与传统逻辑程序相反，原子都是命题而不是一阶的，并且可以使用两种形式的否定去否定它们: 经典否定(指示为<code>$ \neg $</code>  )和否定为失败(指示为 <code>$not$</code>)。文字要么是原子要么是(使用经典否定)否定的原子。下面是一个例子程序:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a \leftarrow b, not~c        </div><div class="line"></div><div class="line">a, not~\neg c \leftarrow not~d, \neg e       </div><div class="line"></div><div class="line">\neg c \leftarrow not~\neg e, a</div></pre></td></tr></table></figure>
+<p>依据第一个规则， <code>$a$</code> 是真，只要<code>$b$</code> 是真，并且 <code>$c$</code> 可以被假定为假而不产生矛盾。</p>
+<h4 id="语义"><a href="#语义" class="headerlink" title="语义"></a>语义</h4><p>程序的语义基于它的回答集，每个回答集都是文字集合。对于不包含否定为失败的程序，程序的语义基于闭包和最小性的概念:</p>
+<p>程序在一个文字集合下闭合，如果这个集合包含至少一个在某个规则的头部中的文字，而总是包含在规则的体部中的所有文字。<br>文字集合是一个程序回答集，如果在这个程序闭合于的文字集合中、它(在集合的容量(containment)上)是最小化的。<br>如果程序包含使用否定为失败否定的一些文字，语义要求额外的简约概念:</p>
+<p>一个程序在一个文字集合下的简约是通过对每个规则进行下列变更而获得的程序:<br>除去在头部中的、使用否定为失败否定的并且在集合中的所有文字；<br>除去在后部中的、使用否定为失败否定的并且在集合中不包含的所有文字；<br>删除整个规则，如果在应用完上面两个规则之后，它仍然包含(使用否定为失败)否定的原子。<br>文字集合是一个程序的回答集，如果它是这个程序在这个集合自身下的简约的回答集。换句话说，可以通过运行下列非确定性的算法来计算一个回答集可以:</p>
+<blockquote>
+<p> 选择文字集合 L;<br>计算程序 P 在 L 下的简约 PL;<br>如果 L 是 PL 所闭合的最小化文字集合则<br>输出 L</p>
+</blockquote>
+<p>最初的文字集合 L 的选择是非确定性的。确定 L 是否为一个回答集的算法，首先计算程序在 L 下的简约，并接着检查 L 是否是这个无否定为失败的程序的回答集。</p>
+<p>一个回答集程序可以有零个、一个或多个回答集。一个程序蕴涵一个文字，如果它的所有的回答集都包含这个文字。</p>
+</li>
+</ul>
+<h2 id="事件驱动程序设计"><a href="#事件驱动程序设计" class="headerlink" title="事件驱动程序设计"></a>事件驱动程序设计</h2><p>事件驱动程序设计 (<strong>Event-driven programming</strong>) 是一种电脑程序设计模型。这种模型的程序运行流程是由用户的动作（如鼠标的按键，键盘的按键动作）或者是由其他程序的消息来决定的。相对于批处理程序设计 (<strong>batch programming</strong>) 而言，程序运行的流程是由程序员来决定。批量的程序设计在初级程序设计教学课程上是一种方式。然而，事件驱动程序设计这种设计模型是在交互程序 (<strong>Interactive program</strong>) 的情况下孕育而生的。</p>
+<p>事件驱动程序可以由任何编程语言来实现，然而使用某些语言来撰写会比其他的语言来的简单。有些集成开发环境（简称IDE）也会影响实现事件驱动程序设计的难易程度。有的 IDE 会使的开发工作变的很简单，有的则否。</p>
+<ul>
+<li><h3 id="面向服务的体系结构"><a href="#面向服务的体系结构" class="headerlink" title="面向服务的体系结构"></a>面向服务的体系结构</h3>面向服务的体系结构 (<strong>service-oriented architecture</strong>) 并不特指一种技术，而是一种分散式运算的软件设计方法。软件的部分组件(呼叫者)，可以透过网络上的通用协定呼叫另一个应用软件元件执行、运作，让呼叫者获得服务。SOA原则上采用开放标准、与软件资源进行交互并采用表示的标准方式。因此应能跨越厂商、产品与技术。一项服务应视为一个独立的功能单元，可以远端存取并独立执行与更新，例如在线上线查询信用卡账单。</li>
+</ul>
+<p>SOA中的一项服务应有以下四个特性，                </p>
+<ul>
+<li>针对某特定要求的输出，该服务就是运作一项商业逻辑        </li>
+<li>具有完备的特性 (<strong>self-contained</strong>)     </li>
+<li>消费者并不需要了解此服务的运作过程      </li>
+<li>可能由底层其他服务组成      </li>
+<li><h3 id="SOA的原则"><a href="#SOA的原则" class="headerlink" title="SOA的原则"></a>SOA的原则</h3>以下指导原则是开发，维护和使用SOA的基本原则，       </li>
+<li>可重复使用, 粒度, 模组性, 可组合型, 物件化原件, 构件化以及具交互操作性</li>
+<li>符合开放标准(通用的或行业的)</li>
+<li>服务的识别和分类，提供和发布，监控和跟踪。</li>
+</ul>
+<p>下面是一些特定的体系架构原则，      </p>
+<ul>
+<li>服务封装</li>
+<li>服务松耦合(Loosely coupled) - 服务之间的关系最小化，只是互相知道。</li>
+<li>服务契约 - 服务按照服务描述文档所定义的服务契约行事。</li>
+<li>服务抽象 - 除了服务契约中所描述的内容，服务将对外部隐藏逻辑。</li>
+<li>服务的重用性 - 将逻辑分布在不同的服务中，以提高服务的重用性。</li>
+<li>服务的可组合性 - 一组服务可以协调工作并组合起来形成一个组合服务。</li>
+<li>服务自治 – 服务对所封装的逻辑具有控制权</li>
+<li>服务无状态 – 服务将一个活动所需保存的资讯最小化。</li>
+<li>服务的可被发现性 – 服务需要对外部提供描述资讯，这样可以通过现有的发现机制发现并访问这些服务。 </li>
+</ul>
+<p>除此以外，在定义一个SOA实现时，还需要考虑以下因素，     </p>
+<ul>
+<li>生命周期管理</li>
+<li>有效使用系统资源</li>
+<li>服务成熟度和性能</li>
+</ul>
+<h2 id="命令式编程"><a href="#命令式编程" class="headerlink" title="命令式编程"></a>命令式编程</h2><p>指令式编程 (<strong>Imperative programming</strong>) ，是一种描述电脑所需作出的行为的编程典范。几乎所有电脑的硬件工作都是指令式的；几乎所有电脑的硬件都是设计来运行机器码，使用指令式的风格来写的。较高级的指令式编程语言使用变量和更复杂的语句，但仍依从相同的典范。菜谱和行动清单，虽非计算机程序，但与指令式编程有相似的风格：每步都是指令，有形的世界控制情况。因为指令式编程的基础观念，不但概念上比较熟悉，而且较容易具体表现于硬件，所以大部分的编程语言都是指令式的。</p>
+<p>大部分的高级语言都支持四种基本的语句：</p>
+<ul>
+<li>运算语句一般来说都表现了在内存内的数据进行运算的行为，然后将结果存入内存中以便日后使用。高级指令式编程语言更能处理复杂的表达式，可能会产生四则运算和函数计算的结合。</li>
+<li>循环语句容许一些语句反复运行数次。循环可依据一个默认的数目来决定运行这些语句的次数；或反复运行它们，直至某些条件改变。</li>
+<li>条件分支语句容许仅当某些条件成立时才运行某个区块。否则，这个区块中的语句会略去，然后按区块后的语句继续运行。</li>
+<li>无条件分支语句容许运行顺序转移到程序的其他部分之中。包括跳跃（在很多语言中称为<code>Goto</code>）、副程序和<code>Procedure</code>等。<br>循环、条件分支和无条件分支都是控制流程。</li>
+</ul>
+<p>早期的指令式编程语言都是电脑本身的机械语言。在这些语言中，指示非常简单，令硬件的运行更容易，却阻碍了复杂程序的设计。1954年开始开发的FORTRAN，是首个在复杂程序的设计中除掉机器码的编程语言。它是编译型的编程语言，容许命名变量、复杂的表达式、副程序和其他功能，这些功能现在在指令式语言中都非常普遍。后来的二十年中，可以看到大量的其他高级指令式编程语言出现。在1980年后，面向对象编程有迅速的发展；面向对象编程语言均有着指令式的风格，但增添了支持对象的功能。</p>
+<ul>
+<li><h3 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h3>结构化程序设计 (<strong>Structured programming</strong>) ，一种编程典范。它采用子程序、代码区块、<code>for</code>循环以及<code>while</code>循环等结构，来取代传统的 <code>goto</code>。希望借此来改善计算机程序的明晰性、质量以及开发时间，并且避免写出面条式代码。</li>
+</ul>
+<p>结构化程序设计在1960年代开始发展，科拉多·伯姆及朱塞佩·贾可皮尼 (<strong>Giuseppe Jacopini</strong>) 于1966年5月在《Communications of the ACM》期刊发表论文，说明任何一个有goto指令的程序，可以改为完全不使用goto指令的程序，后来艾兹赫尔·戴克斯特拉在1968年也提出著名的论文《GOTO陈述有害论》（Go To Statement Considered Harmful），因此结构化程序设计开始盛行，此概念理论上可以由结构化程序理论所证明，而在实务上，当时也有像ALGOL一样，有丰富控制结构的编程语言来实现结构化程序设计。</p>
+<ul>
+<li><h4 id="过程式程序设计"><a href="#过程式程序设计" class="headerlink" title="过程式程序设计"></a>过程式程序设计</h4><p>过程式程序设计 (<strong>Procedural programming</strong>) ，又称过程式编程、过程化编程，一种编程典范，有时会被视为是指令式编程的同义语。派生自结构化编程 (<strong>Structured programming</strong>) ，主要采取程序调用 (<strong>procedure call</strong>) 或函数调用 (<strong>function call</strong>) 的方式来进行流程控制。流程则由包涵一系列运算步骤的程序 (<strong>Procedures</strong>) ，例程 (<strong>routines</strong>) ，子程序 (<strong>subroutines</strong>), 方法（<strong>methods</strong>），或函数（<strong>functions</strong>）来控制。在程序运行的任何一个时间点，都可以调用某个特定的程序。任何一个特定的程序，也能被任意一个程序或是它自己本身调用。</p>
+<p>著名的例子有<code>Linux</code>内核，<code>git</code>，以及<code>Apache HTTP Server</code>等。</p>
+</li>
+</ul>
+<h3 id="面向对象程序设计"><a href="#面向对象程序设计" class="headerlink" title="面向对象程序设计"></a>面向对象程序设计</h3><p>面向对象程序设计(<strong>Object-oriented programming，缩写：OOP</strong>)是种具有对象概念的程序编程典范，同时也是一种程序开发的抽象方针。它可能包含数据、属性、代码与方法。对象则指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性，对象里的程序可以访问及经常修改对象相关连的数据。在面向对象程序编程里，计算机程序会被设计成彼此相关的对象。</p>
+<p>面向对象程序设计可以看作一种在程序中包含各种独立而又互相调用的对象的思想，这与传统的思想刚好相反：传统的程序设计主张将程序看作一系列函数的集合，或者直接就是一系列对电脑下达的指令。面向对象程序设计中的每一个对象都应该能够接受数据、处理数据并将数据传达给其它对象，因此它们都可以被看作一个小型的“机器”，即对象。目前已经被证实的是，面向对象程序设计推广了程序的灵活性和可维护性，并且在大型项目设计中广为应用。此外，支持者声称面向对象程序设计要比以往的做法更加便于学习，因为它能够让人们更简单地设计并维护程序，使得程序更加便于分析、设计、理解。反对者在某些领域对此予以否认。</p>
+<p>当我们提到面向对象的时候，它不仅指一种程序设计方法。它更多意义上是一种程序开发方式。在这一方面，我们必须了解更多关于面向对象系统分析和面向对象设计（Object Oriented Design，简称OOD）方面的知识。许多流行的编程语言是面向对象的,它们的风格就是会透由对象来创出实例。</p>
+<p>重要的面向对象编程语言包含Common Lisp、Python、C++、Objective-C、Smalltalk、Delphi、Java、Swift、C#、Perl、Ruby 与 PHP等。</p>
+<ul>
+<li><h4 id="自动机编程"><a href="#自动机编程" class="headerlink" title="自动机编程"></a>自动机编程</h4><p>自动机编程（Automata-based programming）是编程范式中的一种，是指程序或其中的部分是以有限状态机（FSM）为模型的程序，有些程序则会用其他型式（也更复杂）的自动机为其模型。</p>
+<p>有限状态机编程（FSM-based programming）大致上等同于自动机编程，但有限状态机编程专指以有限状态机为模型的程序。</p>
+<p>自动机编程有以下的二项特征：</p>
+<p>程序运行的时间中可以清楚划分成数个自动机的步骤（step），每一个步骤即为一个程序区块，有单一的进入点，可以是一个函数或其他程序。若有需要时，程序区块可以再依其状态的不同，划分为子区块。<br>不同步骤的程序区块只能通过一组清楚标示的变量交换信息，这些变量称为状态（state），使用自动机编程的程序不能用其他不显然可见的方式标示状态，例如区域变量的数值、回传地址、目前程序指针的位置等。因此一程序在任二个不同时间下的差异，只有状态数值的不同，其余都相同。<br>自动机编程的运行过程是一个由自动机步骤形成的循环。</p>
+<p>自动机编程中处理问题的思考方式很类似在利用图灵机、马尔可夫算法处理问题时的思考方式。</p>
+<p>示例：<br>考虑一个C语言的程序，由标准输入流一行一行的读取数据，打印各一行的第一个英文单字。因此一开始需确认第一个英文单字之前是否有空白，若有，需读取所有空白后略过不打印，读取第一个英文单字然后打印，之后读取其他内容略过不打印，直到读到换行符号为止。任何情形下只要读到换行符号，就重新开始此算法，任何情形下只要读到文件结束（end-of-file）的符号，就结束程序。</p>
+<p>以下是传统指令式编程的C语言程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> c;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        c = getchar();</div><div class="line">        <span class="keyword">while</span>(c == <span class="string">' '</span>)</div><div class="line">            c = getchar();</div><div class="line">        <span class="keyword">while</span>(c != EOF &amp;&amp; c != <span class="string">' '</span> &amp;&amp; c != <span class="string">'\n'</span>) &#123;</div><div class="line">            <span class="built_in">putchar</span>(c);</div><div class="line">            c = getchar();</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</div><div class="line">        <span class="keyword">while</span>(c != EOF &amp;&amp; c != <span class="string">'\n'</span>)</div><div class="line">            c = getchar();</div><div class="line">    &#125; <span class="keyword">while</span>(c != EOF);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>自动机编程的程序<br>上述问题也可以用有有限状态机的方式处理，此程序有三个不同的阶段：读取并跳过第一个单词前的空白、读取第一个单词并且打印、跳过后续的所有字符。以下将这三个阶段定义为三个状态before、inside及after。自动机编程的程序如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">enum</span> states &#123;</div><div class="line">        before, inside, after</div><div class="line">    &#125; state;</div><div class="line">    <span class="keyword">int</span> c;</div><div class="line">    state = before;</div><div class="line">    <span class="keyword">while</span>((c = getchar()) != EOF) &#123;</div><div class="line">        <span class="keyword">switch</span>(state) &#123;</div><div class="line">            <span class="keyword">case</span> before:</div><div class="line">                <span class="keyword">if</span>(c == <span class="string">'\n'</span>) &#123;</div><div class="line">                    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</div><div class="line">                &#125; <span class="keyword">else</span></div><div class="line">                <span class="keyword">if</span>(c != <span class="string">' '</span>) &#123;</div><div class="line">                    <span class="built_in">putchar</span>(c);</div><div class="line">                    state = inside;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> inside:</div><div class="line">                <span class="keyword">switch</span>(c) &#123;</div><div class="line">                    <span class="keyword">case</span> <span class="string">' '</span>:  state = after; <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> <span class="string">'\n'</span>:</div><div class="line">                        <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</div><div class="line">                        state = before;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">default</span>:   <span class="built_in">putchar</span>(c);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> after:</div><div class="line">                <span class="keyword">if</span>(c == <span class="string">'\n'</span>) &#123;</div><div class="line">                    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</div><div class="line">                    state = before;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>虽然此程序较长，至少有一个明显的好处，程序中只调用一个读取字符的getchar()函数，而且程序中只有一个循环，不像之前程序使用四个循环。</p>
+<p>此程序中while循环内的程序即为自动机的步骤，而循环本身即可重复的运行自动机的程序。</p>
+<p>对应的有限状态机示意图<br>此程序实现如右图所示的有限状态机，其中N表示换行字符、S表示空白、A表示其他的字符。自动机依目前状态及读取的字符不同，会运行图中一个箭头所示的动作，可能是由一个状态跳到下一个状态，也者停在原来的状态。其中有些箭头有标示星号，表示需打印读到的字符。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/软件工程/" rel="tag"># 软件工程</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/13/Tips of golang coding/" rel="next" title="Tips Of Golang coding">
+                <i class="fa fa-chevron-left"></i> Tips Of Golang coding
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://olbemhszx.bkt.clouddn.com/wufeilong-info-kn.jpg"
+               alt="Feron Wu" />
+          <p class="site-author-name" itemprop="name">Feron Wu</p>
+          <p class="site-description motion-element" itemprop="description">Stay hungery,stay foolish</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mod-joker" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1783633470" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编程范型"><span class="nav-number">1.</span> <span class="nav-text">编程范型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从网上找到的资料整理而成"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">从网上找到的资料整理而成</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向代理编程"><span class="nav-number">1.1.</span> <span class="nav-text">面向代理编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于组件的软件工程"><span class="nav-number">1.2.</span> <span class="nav-text">基于组件的软件工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明式编程"><span class="nav-number">1.3.</span> <span class="nav-text">声明式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数编程"><span class="nav-number">1.3.1.</span> <span class="nav-text">函数编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束编程"><span class="nav-number">1.3.2.</span> <span class="nav-text">约束编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑编程"><span class="nav-number">1.3.3.</span> <span class="nav-text">逻辑编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回答集编程"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">回答集编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语义"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">语义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件驱动程序设计"><span class="nav-number">1.4.</span> <span class="nav-text">事件驱动程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向服务的体系结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">面向服务的体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SOA的原则"><span class="nav-number">1.4.2.</span> <span class="nav-text">SOA的原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令式编程"><span class="nav-number">1.5.</span> <span class="nav-text">命令式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构化程序设计"><span class="nav-number">1.5.1.</span> <span class="nav-text">结构化程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#过程式程序设计"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">过程式程序设计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象程序设计"><span class="nav-number">1.5.2.</span> <span class="nav-text">面向对象程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动机编程"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">自动机编程</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feron Wu</span>
+</div>
+
+
+<div class="powered-by">
+   个人博客
+</div>
+
+<div class="theme-info">
+  Stay Hungry  Stay foolish
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'disqus_X9RsguNY6C';
+      var disqus_identifier = '2018/03/13/编程范型/';
+
+      var disqus_title = "Tips Of Golang coding";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6P89pV2AdFT1oy0MX6k8bcQF-gzGzoHsz", "BNznUOpl0vfOuS2WRghq40zK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
