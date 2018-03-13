@@ -1,0 +1,924 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PHP,PHP知识积累," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/ico_wufeilong.info.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="工作中的点点滴滴">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工作中的PHP-工作中遇到的问题点滴累计">
+<meta property="og:url" content="http://yoursite.com/2018/03/13/工作中的PHP/index.html">
+<meta property="og:site_name" content="Feron's BLOG">
+<meta property="og:description" content="工作中的点点滴滴">
+<meta property="og:updated_time" content="2018-03-13T14:20:35.252Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工作中的PHP-工作中遇到的问题点滴累计">
+<meta name="twitter:description" content="工作中的点点滴滴">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/13/工作中的PHP/"/>
+
+
+
+
+
+  <title> 工作中的PHP-工作中遇到的问题点滴累计 | Feron's BLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c59128df5f45d342a40893e1150bf84b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Feron's BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">KEEP CLAM AND WRITE ON</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/工作中的PHP/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feron Wu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olbemhszx.bkt.clouddn.com/wufeilong-info-kn.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feron's BLOG">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feron's BLOG" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                工作中的PHP-工作中遇到的问题点滴累计
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T22:13:43+08:00">
+                2018-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/13/工作中的PHP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/13/工作中的PHP/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/13/工作中的PHP/" class="leancloud_visitors" data-flag-title="工作中的PHP-工作中遇到的问题点滴累计">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  工作中的点点滴滴
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><h3 id="SESSION-的原理"><a href="#SESSION-的原理" class="headerlink" title="SESSION 的原理"></a><code>SESSION</code> 的原理</h3><code>HTTP</code> 协议是无状态协议，<strong>session</strong> 是在服务器端保持用户会话数据的一种方法。<br>实现过程如下    </li>
+</ul>
+<ol>
+<li>将客户端和服务器端建立一对一的联系，每个客户端都有一个唯一标识，这样服务器才能识别出来。建议唯一标识的方法有两种：使用<code>cookie</code> 或者通过 <code>GET</code> 方式指定。默认配置的 <code>PHP</code> 使用 <code>session</code> 的时会建立一个名叫 <code>PHPSESSID</code> 的 <code>cookie</code>（可以通过 <code>php.ini</code> 修改 <code>session.name</code> 值指定），如果客户端禁用 <code>cookie</code> ，你也可以指定通过 <code>GET</code> 方式把 <code>session id</code> 传到服务器（修改 <code>php.ini</code> 中 <code>session.use_trans_sid</code> 等参数）。</li>
+<li>客户端将 <code>session id</code> 传递到服务器，服务器根据 <code>session id</code> 找到对应的文件，读取的时候对文件内容进行反序列化就得到 <code>session</code> 数据，保存的时候先序列化再写入文件。</li>
+</ol>
+<ul>
+<li><h3 id="PHP-类自动加载原理和实现"><a href="#PHP-类自动加载原理和实现" class="headerlink" title="PHP 类自动加载原理和实现"></a><code>PHP</code> 类自动加载原理和实现</h3></li>
+</ul>
+<p>PHP中类的实例化过程中，系统所做的工作大致是这样的：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 模拟系统实例化过程 */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">instance</span><span class="params">($class)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 如果类存在则返回其实例</span></div><div class="line">    <span class="keyword">if</span> (class_exists($class, <span class="keyword">false</span>)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> $class();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 查看 autoload 函数是否被用户定义</span></div><div class="line">    <span class="keyword">if</span> (function_exists(<span class="string">'__autoload'</span>)) &#123;</div><div class="line">        __autoload($class); <span class="comment">// 最后一次引入的机会</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 再次检查类是否存在</span></div><div class="line">    <span class="keyword">if</span> (class_exists($class, <span class="keyword">false</span>)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> $class();</div><div class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// 系统：我实在没辙了</span></div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'Class Not Found'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>PHP 5.1.0</code> 以后 <code>spl_autoload_register</code> — 注册给定的函数作为 <code>__autoload</code> 的实现<br>函数原型<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bool spl_autoload_register ([ callable $autoload_function [, bool $throw = <span class="keyword">true</span> [, bool $prepend = <span class="keyword">false</span> ]]] )</div></pre></td></tr></table></figure></p>
+<p>如果需要多条 <code>autoload</code> 函数，<code>spl_autoload_register()</code> 满足了此类需求。 它实际上创建了 <code>autoload</code> 函数的队列，按定义时的顺序逐个执行。相比之下， <code>__autoload()</code> 只可以定义一次。<br> 当调用未定义类时，系统就会按顺序调用注册到 <code>spl_autoload_register()</code> 函数的所有函数</p>
+<p> 现在，我们来创建一个 <code>Linux</code> 类，它使用 <code>os</code> 作为它的命名空间（建议文件名与类名保持一致）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">namespace os; // 命名空间</div><div class="line"></div><div class="line">class Linux // 类名</div><div class="line">&#123;</div><div class="line">    function __construct()</div><div class="line">    &#123;</div><div class="line">        echo &apos;&lt;h1&gt;&apos; . __CLASS__ . &apos;&lt;/h1&gt;&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接着，在同一个目录下新建一个 PHP 文件，使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">spl_autoload_register 以函数回调的方式实现自动加载：</div><div class="line"></div><div class="line">spl_autoload_register(function ($class) &#123; // class = os\Linux</div><div class="line"></div><div class="line">    /* 限定类名路径映射 */</div><div class="line">    $class_map = array(</div><div class="line">        // 限定类名 =&gt; 文件路径</div><div class="line">        &apos;os\\Linux&apos; =&gt; &apos;./Linux.php&apos;,</div><div class="line">    );</div><div class="line"></div><div class="line">    /* 根据类名确定文件名 */</div><div class="line">    $file = $class_map[$class];</div><div class="line"></div><div class="line">    /* 引入相关文件 */</div><div class="line">    if (file_exists($file)) &#123;</div><div class="line">        include $file;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">new \os\Linux();</div></pre></td></tr></table></figure></p>
+<p>这里我们使用了一个数组去保存类名与文件路径的关系，这样当类名传入时，自动加载器就知道该引入哪个文件去加载这个类了。</p>
+<p><code>PSR-4</code> 规范中必须要有一个顶级命名空间，它的意义在于表示某一个特殊的目录（文件基目录）。子命名空间代表的是类文件相对于文件基目录的这一段路径（相对路径），类名则与文件名保持一致（注意大小写的区别）。</p>
+<p>举个例子：在全限定类名 <code>\app\view\news\Index</code> 中，如果 <code>app</code> 代表 <code>C:\Baidu</code>，那么这个类的路径则是 <code>C:\Baidu\view\news\Index.php</code></p>
+<p>我们就以解析 <code>\app\view\news\Index</code> 为例，编写一个简单的 Demo：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$class = &apos;app\view\news\Index&apos;;</div><div class="line"></div><div class="line">/* 顶级命名空间路径映射 */</div><div class="line">$vendor_map = array(</div><div class="line">    &apos;app&apos; =&gt; &apos;C:\Baidu&apos;,</div><div class="line">);</div><div class="line"></div><div class="line">/* 解析类名为文件路径 */</div><div class="line">$vendor = substr($class, 0, strpos($class, &apos;\\&apos;)); // 取出顶级命名空间[app]</div><div class="line">$vendor_dir = $vendor_map[$vendor]; // 文件基目录[C:\Baidu]</div><div class="line">$rel_path = dirname(substr($class, strlen($vendor))); // 相对路径[/view/news]</div><div class="line">$file_name = basename($class) . &apos;.php&apos;; // 文件名[Index.php]</div><div class="line"></div><div class="line">/* 输出文件所在路径 */</div><div class="line">echo $vendor_dir . $rel_path . DIRECTORY_SEPARATOR . $file_name;</div></pre></td></tr></table></figure></p>
+<p>通过这个 Demo 可以看出限定类名转换为路径的过程。那么现在就让我们用规范的面向对象方式去实现自动加载器吧。</p>
+<p>首先我们创建一个文件 <code>Index.php</code>，它处于 <code>\app\mvc\view\home</code> 目录中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">namespace app\mvc\view\home;</div><div class="line"></div><div class="line">class Index</div><div class="line">&#123;</div><div class="line">    function __construct()</div><div class="line">    &#123;</div><div class="line">        echo &apos;&lt;h1&gt; Welcome To Home &lt;/h1&gt;&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接着我们在创建一个加载类（不需要命名空间），它处于 <code>\</code> 目录中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">class Loader</div><div class="line">&#123;</div><div class="line">    /* 路径映射 */</div><div class="line">    public static $vendorMap = array(</div><div class="line">        &apos;app&apos; =&gt; __DIR__ . DIRECTORY_SEPARATOR . &apos;app&apos;,</div><div class="line">    );</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 自动加载器</div><div class="line">     */</div><div class="line">    public static function autoload($class)</div><div class="line">    &#123;</div><div class="line">        $file = self::findFile($class);</div><div class="line">        if (file_exists($file)) &#123;</div><div class="line">            self::includeFile($file);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 解析文件路径</div><div class="line">     */</div><div class="line">    private static function findFile($class)</div><div class="line">    &#123;</div><div class="line">        $vendor = substr($class, 0, strpos($class, &apos;\\&apos;)); // 顶级命名空间</div><div class="line">        $vendorDir = self::$vendorMap[$vendor]; // 文件基目录</div><div class="line">        $filePath = substr($class, strlen($vendor)) . &apos;.php&apos;; // 文件相对路径</div><div class="line">        return strtr($vendorDir . $filePath, &apos;\\&apos;, DIRECTORY_SEPARATOR); // 文件标准路径</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 引入文件</div><div class="line">     */</div><div class="line">    private static function includeFile($file)</div><div class="line">    &#123;</div><div class="line">        if (is_file($file)) &#123;</div><div class="line">            include $file;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后，将 <code>Loader</code> 类中的 <code>autoload</code> 注册到 <code>spl_autoload_register</code> 函数中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">include &apos;Loader.php&apos;; // 引入加载器</div><div class="line">spl_autoload_register(&apos;Loader::autoload&apos;); // 注册自动加载</div><div class="line"></div><div class="line">new \app\mvc\view\home\Index(); // 实例化未引用的类</div><div class="line"></div><div class="line">/**</div><div class="line"> * 输出: &lt;h1&gt; Welcome To Home &lt;/h1&gt;</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+<ul>
+<li><h3 id="PHP-trait-详解"><a href="#PHP-trait-详解" class="headerlink" title="PHP trait 详解"></a><code>PHP trait</code> 详解</h3>自 <code>PHP 5.4.0</code> 起，<code>PHP</code> 实现了一种代码复用的方法，称为 <code>trait</code>。</li>
+</ul>
+<p><code>Trait</code> 是为类似 <code>PHP</code> 的单继承语言而准备的一种代码复用机制。<code>Trait</code> 为了减少单继承语言的限制，使开发人员能够自由地在不同层次结构内独立的类中复用 <code>method</code>。<code>Trait</code> 和 <code>Class</code> 组合的语义定义了一种减少复杂性的方式，避免传统多继承和 <code>Mixin</code> 类相关典型问题。</p>
+<p><code>Trait</code> 和 <code>Class</code> 相似，但仅仅旨在用细粒度和一致的方式来组合功能。 无法通过 <code>trait</code> 自身来实例化。它为传统继承增加了水平特性的组合；也就是说，应用的几个 <code>Class</code> 之间不需要继承。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">trait ezcReflectionReturnInfo &#123;</div><div class="line">    function getReturnType() &#123; /*1*/ &#125;</div><div class="line">    function getReturnDescription() &#123; /*2*/ &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ezcReflectionMethod extends ReflectionMethod &#123;</div><div class="line">    use ezcReflectionReturnInfo;</div><div class="line">    /* ... */</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ezcReflectionFunction extends ReflectionFunction &#123;</div><div class="line">    use ezcReflectionReturnInfo;</div><div class="line">    /* ... */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>优先级<br>从基类继承的成员会被 <code>trait</code> 插入的成员所覆盖。优先顺序是来自当前类的成员覆盖了 <code>trait</code> 的方法，而 <code>trait</code> 则覆盖了被继承的方法。</p>
+<p>Example #2 优先顺序示例<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'Hello '</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">trait</span> SayWorld &#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">parent</span>::sayHello();</div><div class="line">        <span class="keyword">echo</span> <span class="string">'World!'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHelloWorld</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="keyword">use</span> <span class="title">SayWorld</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$o = <span class="keyword">new</span> MyHelloWorld();</div><div class="line">$o-&gt;sayHello();</div></pre></td></tr></table></figure></p>
+<ul>
+<li><h3 id="如何排查PHP程序性能瓶颈"><a href="#如何排查PHP程序性能瓶颈" class="headerlink" title="如何排查PHP程序性能瓶颈"></a>如何排查PHP程序性能瓶颈</h3></li>
+<li>性能优化的核心问题<br>哪里有性能问题。</li>
+<li>最佳线程数<br>很多资料上有讲 <code>N + 1</code>，或者 <code>N - 1</code>，这两种情况在保证线程持续运行的情况，也许可以适用；但是在时间的应用场景中，一个业务的处理，线程不可能一直处理运行状态，比如当调用外部 <code>WS</code> ，或者 <code>DB</code> 操作时，都有可能存在 <code>IO</code> 阻塞，在这段时间线程是没有运行的，因此如果只是按照核数确定线程数，不太合理。</li>
+<li>请求响应时间（线程执行总时间<br>一个请求开始到结束的总时间，也就是一个线程执行的总时间，包括线程在 <code>CPU</code> 上运行的时间+线程阻塞等待的时间。</li>
+<li>资源占用时间<br>首先要搞明白，何为资源？很多人第一个想到的肯定是  <code>CPU</code>，性能优化的核心问题是：哪里有性能问题？那些资源有性能问题。并发情况下，资源的抢占是影响性能的主要原因。在某些业务场景，<code>CPU</code>是主要的瓶颈资源，业务执行，占用了大量的 <code>CPU</code> 运算时间，并发请求主要在等待 <code>CPU</code> 的调度执行，因此，此时，<code>CPU</code> 为瓶颈资源，资源占用时间=业务在 <code>CPU</code> 上运行的时间。还有的场景，在等待稀有的共享资源，比如数据库连接，或者数据库锁。比如锁为昂贵的稀缺资源，锁具有互斥排他性，一个线程占据锁，其他线程必须阻塞等待，此时并发性能受到严重的影响。因此，此时，锁为瓶颈资源，资源占用时间=业务在锁独占时间。 还有的场景，调用外围时，外围的响应时间较长，这种情况也造成 <code>QPS</code> 较低，外围响应时间较长，如果没有很好的超时机制，会带来比较严重的后果。单纯的增加线程池数量，或者等待队列的长度，可以提高应用的吞吐量，但是可能有很大的负载压力。</li>
+<li><p>资源并行数<br>同一个时间点，可以并发执行的请求数。比如 <code>CPU</code> 场景下，并行数= <code>CPU</code> 核数；锁独占的情况下，如果共享资源一个，那么并行数=1。</p>
+<p>最佳线程数 = 线程执行总时间 / 资源占用时间 * 资源并行数</p>
+</li>
+<li><h3 id="缓存穿透问题"><a href="#缓存穿透问题" class="headerlink" title="缓存穿透问题"></a>缓存穿透问题</h3></li>
+<li>在缓存失效后，通过加锁或者队列来控制读数据库写缓存的线程数量。比如对某个key只允许一个线程查询数据和写缓存，其他线程等待。 </li>
+<li>不同的key，设置不同的过期时间，让缓存失效的时间点尽量均匀。 </li>
+<li><p>做二级缓存，A1为原始缓存，A2为拷贝缓存，A1失效时，可以访问A2，A1缓存失效时间设置为短期，A2设置为长期</p>
+</li>
+<li><p>缓存穿透：查询一个必然不存在的数据。比如文章表，查询一个不存在的id，每次都会访问DB，如果有人恶意破坏，很可能直接对DB造成影响。解决办法：对所有可能查询的参数以hash形式存储，在控制层先进行校验，不符合则丢弃。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/PHP知识积累/" rel="tag"># PHP知识积累</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/17/MySQL的几个优秀习惯/" rel="next" title="高性能MySQL的N个习惯">
+                <i class="fa fa-chevron-left"></i> 高性能MySQL的N个习惯
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://olbemhszx.bkt.clouddn.com/wufeilong-info-kn.jpg"
+               alt="Feron Wu" />
+          <p class="site-author-name" itemprop="name">Feron Wu</p>
+          <p class="site-description motion-element" itemprop="description">Stay hungery,stay foolish</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mod-joker" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1783633470" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SESSION-的原理"><span class="nav-number">1.</span> <span class="nav-text">SESSION 的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-类自动加载原理和实现"><span class="nav-number">2.</span> <span class="nav-text">PHP 类自动加载原理和实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-trait-详解"><span class="nav-number">3.</span> <span class="nav-text">PHP trait 详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何排查PHP程序性能瓶颈"><span class="nav-number">4.</span> <span class="nav-text">如何排查PHP程序性能瓶颈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存穿透问题"><span class="nav-number">5.</span> <span class="nav-text">缓存穿透问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feron Wu</span>
+</div>
+
+
+<div class="powered-by">
+   个人博客
+</div>
+
+<div class="theme-info">
+  Stay Hungry  Stay foolish
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'disqus_X9RsguNY6C';
+      var disqus_identifier = '2018/03/13/工作中的PHP/';
+
+      var disqus_title = "工作中的PHP-工作中遇到的问题点滴累计";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6P89pV2AdFT1oy0MX6k8bcQF-gzGzoHsz", "BNznUOpl0vfOuS2WRghq40zK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
