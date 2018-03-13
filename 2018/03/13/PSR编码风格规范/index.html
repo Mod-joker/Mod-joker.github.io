@@ -1,0 +1,1048 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PHP,PSR,编程规范," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/ico_wufeilong.info.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="编程规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PSR编码风格规范">
+<meta property="og:url" content="http://yoursite.com/2018/03/13/PSR编码风格规范/index.html">
+<meta property="og:site_name" content="Feron's BLOG">
+<meta property="og:description" content="编程规范">
+<meta property="og:updated_time" content="2018-03-13T14:41:09.884Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PSR编码风格规范">
+<meta name="twitter:description" content="编程规范">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/13/PSR编码风格规范/"/>
+
+
+
+
+
+  <title> PSR编码风格规范 | Feron's BLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c59128df5f45d342a40893e1150bf84b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Feron's BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">KEEP CLAM AND WRITE ON</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/PSR编码风格规范/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feron Wu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://olbemhszx.bkt.clouddn.com/wufeilong-info-kn.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Feron's BLOG">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Feron's BLOG" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PSR编码风格规范
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T22:30:42+08:00">
+                2018-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/13/PSR编码风格规范/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/13/PSR编码风格规范/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/13/PSR编码风格规范/" class="leancloud_visitors" data-flag-title="PSR编码风格规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  编程规范
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="「PSR-规范」PSR编码风格规范"><a href="#「PSR-规范」PSR编码风格规范" class="headerlink" title="「PSR 规范」PSR编码风格规范"></a><center>「PSR 规范」PSR编码风格规范</center></h2><blockquote>
+<h4 id="代码是写给人看的，不是写给计算机看的"><a href="#代码是写给人看的，不是写给计算机看的" class="headerlink" title="代码是写给人看的，不是写给计算机看的"></a>代码是写给人看的，不是写给计算机看的</h4><p>所有 PSR 规范请见：<a href="https://psr.phphub.org/" target="_blank" rel="external">https://psr.phphub.org/</a></p>
+</blockquote>
+<h2 id="编码风格指南"><a href="#编码风格指南" class="headerlink" title="编码风格指南"></a>编码风格指南</h2><p>本篇规范是 [PSR-1] 基本代码规范的继承与扩展。<br>本规范希望通过制定一系列规范化PHP代码的规则，以减少在浏览不同作者的代码时，因代码风格的不同而造成不便。<br>当多名程序员在多个项目中合作时，就需要一个共同的编码规范，而本文中的风格规范源自于多个不同项目代码风格的共同特性，因此，本规范的价值在于我们都遵循这个编码风格，而不是在于它本身。</p>
+<h2 id="关于「能愿动词」的使用"><a href="#关于「能愿动词」的使用" class="headerlink" title="关于「能愿动词」的使用"></a>关于「能愿动词」的使用</h2><ul>
+<li>为了避免歧义，文档大量使用了「能愿动词」，对应的解释如下。  </li>
+<li>必须 (MUST)：绝对，严格遵循，请照做，无条件遵守；   </li>
+<li>一定不可 (MUST NOT)：禁令，严令禁止；   </li>
+<li>应该 (SHOULD) ：强烈建议这样做，但是不强求；    </li>
+<li>不该 (SHOULD NOT)：强烈不建议这样做，但是不强求；   </li>
+<li>可以(MAY)和可选(OPTIONAL)：选择性高一点，在这个文档内，此词语使用较少；<br>参见：<a href="href=http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>    </li>
+</ul>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><ul>
+<li>代码 必须 遵循 PSR-1 中的编码规范 。     </li>
+<li>代码 必须 使用4个空格符而不是「Tab 键」进行缩进。   </li>
+<li>每行的字符数 应该 软性保持在 80 个之内，理论上 一定不可 多于 120 个，但 一定不可 有硬性限制。  </li>
+<li>每个 namespace 命名空间声明语句和 use 声明语句块后面，必须 插入一个空白行。  </li>
+<li>类的开始花括号（{） 必须 写在函数声明后自成一行，结束花括号（}）也 必须 写在函数主体后自成一行。  </li>
+<li>方法的开始花括号（{） 必须 写在函数声明后自成一行，结束花括号（}）也 必须 写在函数主体后自成一行。</li>
+<li>类的属性和方法 必须 添加访问修饰符（private、protected 以及 public），abstract 以及 final 必须 声明在访问修饰符之前，而 static 必须 声明在访问修饰符之后。</li>
+<li>控制结构的关键字后 必须 要有一个空格符，而调用方法或函数时则 一定不可 有。</li>
+<li>控制结构的开始花括号（{） 必须 写在声明的同一行，而结束花括号（}） 必须 写在主体后自成一行。</li>
+<li>控制结构的开始左括号后和结束右括号前，都 一定不可 有空格符。</li>
+</ul>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>以下例子程序简单地展示了以上大部分规范：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Vendor</span>\<span class="title">Package</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">FooInterface</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">BarClass</span> <span class="title">as</span> <span class="title">Bar</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">OtherVendor</span>\<span class="title">OtherPackage</span>\<span class="title">BazClass</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">extends</span> <span class="title">Bar</span> <span class="keyword">implements</span> <span class="title">FooInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sampleFunction</span><span class="params">($a, $b = null)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> ($a === $b) &#123;</div><div class="line">            bar();</div><div class="line">        &#125; <span class="keyword">elseif</span> ($a &gt; $b) &#123;</div><div class="line">            $foo-&gt;bar($arg1);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            BazClass::bar($arg2, $arg3);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">final</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">bar</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// 方法的内容</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="通则"><a href="#通则" class="headerlink" title="通则"></a>通则</h2><h3 id="基本编码准则"><a href="#基本编码准则" class="headerlink" title="基本编码准则"></a>基本编码准则</h3><p>代码 必须 符合 PSR-1 中的所有规范。</p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ul>
+<li>所有PHP文件 必须 使用 Unix LF (linefeed) 作为行的结束符。</li>
+<li>所有PHP文件 必须 以一个空白行作为结束。</li>
+<li>纯PHP代码文件 必须 省略最后的 ?&gt; 结束标签。</li>
+</ul>
+<h3 id="行"><a href="#行" class="headerlink" title="行"></a>行</h3><ul>
+<li><p>行的长度<strong>一定不可</strong>有硬性的约束。</p>
+</li>
+<li><p>软性的长度约束<strong>必须</strong>要限制在 120 个字符以内，若超过此长度，带代码规范检查的编辑器<strong>必须</strong>要发出警告，不过 <strong>一定不可</strong>发出错误提示。</p>
+</li>
+<li><p>每行<strong>不该</strong>多于80个字符，大于80字符的行<strong>应该</strong>折成多行。</p>
+</li>
+<li><p>非空行后<strong>一定不可</strong>有多余的空格符。</p>
+</li>
+<li><p>空行<strong>可以</strong>使得阅读代码更加方便以及有助于代码的分块。</p>
+</li>
+<li><p>每行<strong>一定不可</strong>存在多于一条语句。</p>
+</li>
+</ul>
+<h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>代码<strong>必须</strong>使用4个空格符的缩进，<strong>一定不可</strong>用tab键。</p>
+<blockquote>
+<p>备注：使用空格而不是「tab键缩进」的好处在于， 避免在比较代码差异、打补丁、重阅代码以及注释时产生混淆。 并且，使用空格缩进，让对齐变得更方便。  </p>
+<h3 id="关键字-以及-True-False-Null"><a href="#关键字-以及-True-False-Null" class="headerlink" title="关键字 以及 True/False/Null"></a>关键字 以及 True/False/Null</h3><p>PHP所有关键字<strong>必须</strong>全部小写。</p>
+</blockquote>
+<p>常量 true 、false 和 null 也<strong>必须</strong>全部小写。</p>
+<h2 id="namespace-以及-use-声明"><a href="#namespace-以及-use-声明" class="headerlink" title="namespace 以及 use 声明"></a>namespace 以及 use 声明</h2><ul>
+<li><p>namespace 声明后<strong>必须</strong>插入一个空白行。</p>
+</li>
+<li><p>所有 use <strong>必须</strong> 在 namespace 后声明。</p>
+</li>
+<li><p>每条 use 声明语句 <strong>必须</strong> 只有一个 use 关键词。</p>
+</li>
+<li><p>use 声明语句块后 <strong>必须</strong> 要有一个空白行。</p>
+</li>
+</ul>
+<p>例如：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Vendor</span>\<span class="title">Package</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">FooClass</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">BarClass</span> <span class="title">as</span> <span class="title">Bar</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">OtherVendor</span>\<span class="title">OtherPackage</span>\<span class="title">BazClass</span>;</div><div class="line"></div><div class="line"><span class="comment">// ... 更多的 PHP 代码在这里 ...</span></div></pre></td></tr></table></figure></p>
+<h2 id="类、属性和方法"><a href="#类、属性和方法" class="headerlink" title="类、属性和方法"></a>类、属性和方法</h2><p>此处的「类」泛指所有的「class类」、「接口」以及「traits 可复用代码块」。</p>
+<h3 id="扩展与继承"><a href="#扩展与继承" class="headerlink" title="扩展与继承"></a>扩展与继承</h3><ul>
+<li><p>关键词 extends 和 implements <strong>必须</strong> 写在类名称的同一行。</p>
+</li>
+<li><p>类的开始花括号 <strong>必须</strong> 独占一行，结束花括号也 <strong>必须</strong> 在类主体后独占一行。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Vendor</span>\<span class="title">Package</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">FooClass</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">BarClass</span> <span class="title">as</span> <span class="title">Bar</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">OtherVendor</span>\<span class="title">OtherPackage</span>\<span class="title">BazClass</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> <span class="keyword">extends</span> <span class="title">ParentClass</span> <span class="keyword">implements</span> \<span class="title">ArrayAccess</span>, \<span class="title">Countable</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 这里面是常量、属性、类方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>implements 的继承列表也 <strong>可以</strong> 分成多行，这样的话，每个继承接口名称都 <strong>必须</strong> 分开独立成行，包括第一个。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Vendor</span>\<span class="title">Package</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">FooClass</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">BarClass</span> <span class="title">as</span> <span class="title">Bar</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">OtherVendor</span>\<span class="title">OtherPackage</span>\<span class="title">BazClass</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> <span class="keyword">extends</span> <span class="title">ParentClass</span> <span class="keyword">implements</span></span></div><div class="line">    \<span class="title">ArrayAccess</span>,</div><div class="line">    \<span class="title">Countable</span>,</div><div class="line">    \<span class="title">Serializable</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 这里面是常量、属性、类方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li>每个属性都 <strong>必须</strong> 添加访问修饰符。</li>
+<li><strong>一定不可</strong> 使用关键字 var 声明一个属性。</li>
+<li>每条语句 <strong>一定不可</strong> 定义超过一个属性。</li>
+<li><strong>不该</strong> 使用下划线作为前缀，来区分属性是 protected 或 private。</li>
+</ul>
+<p>以下是属性声明的一个范例：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Vendor</span>\<span class="title">Package</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> $foo = <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li>所有方法都 <strong>必须</strong> 添加访问修饰符。</li>
+<li><strong>不该</strong> 使用下划线作为前缀，来区分方法是 protected 或 private。</li>
+<li>方法名称后 <strong>一定不可</strong> 有空格符，其开始花括号 <strong>必须</strong> 独占一行，结束花括号也<strong>必须</strong>在方法主体后单独成一行。参数左括号后和右括号前 <strong>一定不可</strong> 有空格。</li>
+</ul>
+<p>一个标准的方法声明可参照以下范例，留意其括号、逗号、空格以及花括号的位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">namespace Vendor\Package;</div><div class="line"></div><div class="line">class ClassName</div><div class="line">&#123;</div><div class="line">    public function fooBarBaz($arg1, &amp;$arg2, $arg3 = [])</div><div class="line">    &#123;</div><div class="line">        // method body</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="方法的参数"><a href="#方法的参数" class="headerlink" title="方法的参数"></a>方法的参数</h3><ul>
+<li>参数列表中，每个逗号后面 <strong>必须</strong> 要有一个空格，而逗号前面 <strong>一定不可</strong> 有空格。</li>
+<li><p>有默认值的参数，<strong>必须</strong> 放到参数列表的末尾。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">namespace Vendor\Package;</div><div class="line"></div><div class="line">class ClassName</div><div class="line">&#123;</div><div class="line">    public function foo($arg1, &amp;$arg2, $arg3 = [])</div><div class="line">    &#123;</div><div class="line">        // method body</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>参数列表 <strong>可以</strong> 分列成多行，这样，包括第一个参数在内的每个参数都 <strong>必须</strong> 单独成行。</p>
+</li>
+<li>拆分成多行的参数列表后，结束括号以及方法开始花括号 <strong>必须</strong> 写在同一行，中间用一个空格分隔。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">namespace Vendor\Package;</div><div class="line"></div><div class="line">class ClassName</div><div class="line">&#123;</div><div class="line">    public function aVeryLongMethodName(</div><div class="line">        ClassTypeHint $arg1,</div><div class="line">        &amp;$arg2,</div><div class="line">        array $arg3 = []</div><div class="line">    ) &#123;</div><div class="line">        // 方法的内容</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="abstract-、-final-、-以及-static"><a href="#abstract-、-final-、-以及-static" class="headerlink" title="abstract 、 final 、 以及 static"></a>abstract 、 final 、 以及 static</h3><ul>
+<li>需要添加 abstract 或 final 声明时，<strong>必须</strong> 写在访问修饰符前，而 static 则 <strong>必须</strong> 写在其后。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">namespace Vendor\Package;</div><div class="line"></div><div class="line">abstract class ClassName</div><div class="line">&#123;</div><div class="line">    protected static $foo;</div><div class="line"></div><div class="line">    abstract protected function zim();</div><div class="line"></div><div class="line">    final public static function bar()</div><div class="line">    &#123;</div><div class="line">        // method body</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="方法及函数调用"><a href="#方法及函数调用" class="headerlink" title="方法及函数调用"></a>方法及函数调用</h3><ul>
+<li><p>方法及函数调用时，方法名或函数名与参数左括号之间 <strong>一定不可</strong> 有空格，参数右括号前也 <strong>一定不可</strong> 有空格。每个参数前 <strong>一定不可</strong> 有空格，但其后 <strong>必须</strong> 有一个空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">bar();</div><div class="line">$foo-&gt;bar($arg1);</div><div class="line">Foo::bar($arg2, $arg3);</div></pre></td></tr></table></figure>
+</li>
+<li><p>参数 <strong>可以</strong> 分列成多行，此时包括第一个参数在内的每个参数都 <strong>必须</strong> 单独成行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$foo-&gt;bar(</div><div class="line">    $longArgument,</div><div class="line">    $longerArgument,</div><div class="line">    $muchLongerArgument</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h2><p>控制结构的基本规范如下：</p>
+<ul>
+<li>控制结构关键词后 <strong>必须</strong> 有一个空格。</li>
+<li>左括号 ( 后 <strong>一定不可</strong> 有空格。</li>
+<li>右括号 ) 前也 <strong>一定不可</strong> 有空格。</li>
+<li>右括号 ) 与开始花括号 { 间 <strong>必须</strong> 有一个空格。</li>
+<li>结构体主体 <strong>必须</strong> 要有一次缩进。</li>
+<li>结束花括号 } <strong>必须</strong> 在结构体主体后单独成行。</li>
+<li>每个结构体的主体都<strong>必须</strong>被包含在成对的花括号之中，这能让结构体更加结构话，以及减少加入新行时，出错的可能性。</li>
+</ul>
+<h3 id="if-、elseif-和-else"><a href="#if-、elseif-和-else" class="headerlink" title="if 、elseif 和 else"></a>if 、elseif 和 else</h3><ul>
+<li><p>标准的 if 结构如下代码所示，请留意「括号」、「空格」以及「花括号」的位置， 注意 else 和 elseif 都与前面的结束花括号在同一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">if ($expr1) &#123;</div><div class="line">    // if body</div><div class="line">&#125; elseif ($expr2) &#123;</div><div class="line">    // elseif body</div><div class="line">&#125; else &#123;</div><div class="line">    // else body;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>应该 使用关键词 elseif 代替所有 else if ，以使得所有的控制关键字都像是单独的一个词。</p>
+</li>
+</ul>
+<h3 id="switch-和-case"><a href="#switch-和-case" class="headerlink" title="switch 和 case"></a>switch 和 case</h3><ul>
+<li><p>标准的 switch 结构如下代码所示，留意括号、空格以及花括号的位置。 case 语句<strong>必须</strong>相对 switch 进行一次缩进，而break语句以及 case 内的其它语句都 <strong>必须</strong> 相对 case 进行一次缩进。</p>
+</li>
+<li><p>如果存在非空的 case 直穿语句，主体里 <strong>必须</strong> 有类似 // no break 的注释。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">switch ($expr) &#123;</div><div class="line">    case 0:</div><div class="line">        echo &apos;First case, with a break&apos;;</div><div class="line">        break;</div><div class="line">    case 1:</div><div class="line">        echo &apos;Second case, which falls through&apos;;</div><div class="line">        // no break</div><div class="line">    case 2:</div><div class="line">    case 3:</div><div class="line">    case 4:</div><div class="line">        echo &apos;Third case, return instead of break&apos;;</div><div class="line">        return;</div><div class="line">    default:</div><div class="line">        echo &apos;Default case&apos;;</div><div class="line">        break;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="while-和-do-while"><a href="#while-和-do-while" class="headerlink" title="while 和 do while"></a>while 和 do while</h3><ul>
+<li>一个规范的 while 语句应该如下所示，注意其「括号」、「空格」以及「花括号」的位置。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">while ($expr) &#123;</div><div class="line">    // structure body</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>标准的 do while 语句如下所示，同样的，注意其「括号」、「空格」以及「花括号」的位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">do &#123;</div><div class="line">    // structure body;</div><div class="line">&#125; while ($expr);</div></pre></td></tr></table></figure></p>
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><ul>
+<li>标准的 for 语句如下所示，注意其「括号」、「空格」以及「花括号」的位置。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">for ($i = 0; $i &lt; 10; $i++) &#123;</div><div class="line">    // for body</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h3><ul>
+<li>标准的 foreach 语句如下所示，注意其「括号」、「空格」以及「花括号」的位置。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">foreach ($iterable as $key =&gt; $value) &#123;</div><div class="line">    // foreach body</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="try-catch"><a href="#try-catch" class="headerlink" title="try, catch"></a>try, catch</h3><ul>
+<li>标准的 try catch 语句如下所示，注意其「括号」、「空格」以及「花括号」的位置。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">try &#123;</div><div class="line">    // try body</div><div class="line">&#125; catch (FirstExceptionType $e) &#123;</div><div class="line">    // catch body</div><div class="line">&#125; catch (OtherExceptionType $e) &#123;</div><div class="line">    // catch body</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ul>
+<li>闭包声明时，关键词 function 后以及关键词 use 的前后都 必须 要有一个空格。</li>
+<li>开始花括号 必须 写在声明的同一行，结束花括号 必须 紧跟主体结束的下一行。</li>
+<li>参数列表和变量列表的左括号后以及右括号前，一定不可 有空格。</li>
+<li>参数和变量列表中，逗号前 一定不可 有空格，而逗号后 必须 要有空格。</li>
+<li>闭包中有默认值的参数 必须 放到列表的后面。</li>
+<li><p>标准的闭包声明语句如下所示，注意其「括号」、「空格」以及「花括号」的位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$closureWithArgs = function ($arg1, $arg2) &#123;</div><div class="line">    // body</div><div class="line">&#125;;</div><div class="line"></div><div class="line">$closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) &#123;</div><div class="line">    // body</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>参数列表以及变量列表可以分成多行，这样，包括第一个在内的每个参数或变量都 必须 单独成行，而列表的右括号与闭包的开始花括号 必须 放在同一行。</p>
+</li>
+<li>以下几个例子，包含了参数和变量列表被分成多行的多情况。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$longArgs_noVars = function (</div><div class="line">    $longArgument,</div><div class="line">    $longerArgument,</div><div class="line">    $muchLongerArgument</div><div class="line">) &#123;</div><div class="line">   // body</div><div class="line">&#125;;</div><div class="line"></div><div class="line">$noArgs_longVars = function () use (</div><div class="line">    $longVar1,</div><div class="line">    $longerVar2,</div><div class="line">    $muchLongerVar3</div><div class="line">) &#123;</div><div class="line">   // body</div><div class="line">&#125;;</div><div class="line"></div><div class="line">$longArgs_longVars = function (</div><div class="line">    $longArgument,</div><div class="line">    $longerArgument,</div><div class="line">    $muchLongerArgument</div><div class="line">) use (</div><div class="line">    $longVar1,</div><div class="line">    $longerVar2,</div><div class="line">    $muchLongerVar3</div><div class="line">) &#123;</div><div class="line">   // body</div><div class="line">&#125;;</div><div class="line"></div><div class="line">$longArgs_shortVars = function (</div><div class="line">    $longArgument,</div><div class="line">    $longerArgument,</div><div class="line">    $muchLongerArgument</div><div class="line">) use ($var1) &#123;</div><div class="line">   // body</div><div class="line">&#125;;</div><div class="line"></div><div class="line">$shortArgs_longVars = function ($arg) use (</div><div class="line">    $longVar1,</div><div class="line">    $longerVar2,</div><div class="line">    $muchLongerVar3</div><div class="line">) &#123;</div><div class="line">   // body</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>注意，闭包被直接用作函数或方法调用的参数时，以上规则仍然适用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$foo-&gt;bar(</div><div class="line">    $arg1,</div><div class="line">    function ($arg2) use ($var1) &#123;</div><div class="line">        // body</div><div class="line">    &#125;,</div><div class="line">    $arg3</div><div class="line">);</div></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/PSR/" rel="tag"># PSR</a>
+          
+            <a href="/tags/编程规范/" rel="tag"># 编程规范</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/13/工作中的PHP/" rel="next" title="工作中的PHP-工作中遇到的问题点滴累计">
+                <i class="fa fa-chevron-left"></i> 工作中的PHP-工作中遇到的问题点滴累计
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/13/Tips of golang coding/" rel="prev" title="Tips Of Golang coding">
+                Tips Of Golang coding <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://olbemhszx.bkt.clouddn.com/wufeilong-info-kn.jpg"
+               alt="Feron Wu" />
+          <p class="site-author-name" itemprop="name">Feron Wu</p>
+          <p class="site-description motion-element" itemprop="description">Stay hungery,stay foolish</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mod-joker" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1783633470" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#「PSR-规范」PSR编码风格规范"><span class="nav-number">1.</span> <span class="nav-text">「PSR 规范」PSR编码风格规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码是写给人看的，不是写给计算机看的"><span class="nav-number">1.0.1.</span> <span class="nav-text">代码是写给人看的，不是写给计算机看的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码风格指南"><span class="nav-number">2.</span> <span class="nav-text">编码风格指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于「能愿动词」的使用"><span class="nav-number">3.</span> <span class="nav-text">关于「能愿动词」的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">4.</span> <span class="nav-text">概览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-number">4.0.1.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通则"><span class="nav-number">5.</span> <span class="nav-text">通则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本编码准则"><span class="nav-number">5.1.</span> <span class="nav-text">基本编码准则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件"><span class="nav-number">5.2.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行"><span class="nav-number">5.3.</span> <span class="nav-text">行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩进"><span class="nav-number">5.4.</span> <span class="nav-text">缩进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字-以及-True-False-Null"><span class="nav-number">5.5.</span> <span class="nav-text">关键字 以及 True/False/Null</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namespace-以及-use-声明"><span class="nav-number">6.</span> <span class="nav-text">namespace 以及 use 声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类、属性和方法"><span class="nav-number">7.</span> <span class="nav-text">类、属性和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展与继承"><span class="nav-number">7.1.</span> <span class="nav-text">扩展与继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">7.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">7.3.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的参数"><span class="nav-number">7.4.</span> <span class="nav-text">方法的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract-、-final-、-以及-static"><span class="nav-number">7.5.</span> <span class="nav-text">abstract 、 final 、 以及 static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法及函数调用"><span class="nav-number">7.6.</span> <span class="nav-text">方法及函数调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制结构"><span class="nav-number">8.</span> <span class="nav-text">控制结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-、elseif-和-else"><span class="nav-number">8.1.</span> <span class="nav-text">if 、elseif 和 else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch-和-case"><span class="nav-number">8.2.</span> <span class="nav-text">switch 和 case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-和-do-while"><span class="nav-number">8.3.</span> <span class="nav-text">while 和 do while</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for"><span class="nav-number">8.4.</span> <span class="nav-text">for</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#foreach"><span class="nav-number">8.5.</span> <span class="nav-text">foreach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#try-catch"><span class="nav-number">8.6.</span> <span class="nav-text">try, catch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">8.7.</span> <span class="nav-text">闭包</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feron Wu</span>
+</div>
+
+
+<div class="powered-by">
+   个人博客
+</div>
+
+<div class="theme-info">
+  Stay Hungry  Stay foolish
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'disqus_X9RsguNY6C';
+      var disqus_identifier = '2018/03/13/PSR编码风格规范/';
+
+      var disqus_title = "PSR编码风格规范";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("6P89pV2AdFT1oy0MX6k8bcQF-gzGzoHsz", "BNznUOpl0vfOuS2WRghq40zK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
